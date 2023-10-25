@@ -3,10 +3,15 @@ package com.demoqa.tests;
 
 import com.demoqa.pages.RegistrationPage;
 import com.demoqa.utils.RandomVariables;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import static io.qameta.allure.Allure.step;
+
 @Tag("remote")
+@DisplayName("Форма регистрации")
 public class RemotePracticeForm extends RemoteTestBase {
     RegistrationPage registrationPage = new RegistrationPage();
     RandomVariables randomVariables = new RandomVariables();
@@ -14,38 +19,110 @@ public class RemotePracticeForm extends RemoteTestBase {
     @Test
     void formTest() {
 
-        registrationPage.openPage()
-                .removeBanner()
-                .setFirstName(randomVariables.firstNameValue)
-                .setLastName(randomVariables.lastNameValue)
-                .setUserEmail(randomVariables.emailValue)
-                .setGender(randomVariables.genderValue)
-                .setUserNumber(randomVariables.phoneNumber)
-                .setBirthDate(randomVariables.dayValue,randomVariables.monthValue, randomVariables.yearValue)
-                .setSubject(randomVariables.subjectValue)
-                .setHobbie(randomVariables.hobbyValue)
-                .selectPicture(randomVariables.pictureNameValue)
-                .setCurrentAddress(randomVariables.addressValue)
-                .selectStateAndCity(randomVariables.stateValue, randomVariables.cityValue)
+        step("Открываем форму регистрации, убираем баннеры", () -> {
+            registrationPage.openPage().removeBanner();
+        });
 
-                .submitPress();
+        step("Вносим имя", () -> {
+            registrationPage.setFirstName(randomVariables.firstNameValue);
+        });
 
-        registrationPage.verifyRegistrationResultModalAppears()
-                .verifyResult("Student Name", randomVariables.firstNameValue
-                        + " " + randomVariables.lastNameValue)
-                .verifyResult("Student Email", randomVariables.emailValue)
-                .verifyResult("Gender", randomVariables.genderValue)
-                .verifyResult("Mobile", randomVariables.phoneNumber)
-                .verifyResult("Date of Birth", randomVariables.dayValue + " "
-                        + randomVariables.monthValue + "," + randomVariables.yearValue)
-                .verifyResult("Subjects", randomVariables.subjectValue)
-                .verifyResult("Hobbies", randomVariables.hobbyValue)
-                .verifyResult("Picture", randomVariables.pictureNameValue)
-                .verifyResult("Address", randomVariables.addressValue)
-                .verifyResult("State and City", randomVariables.stateValue
-                        + " " + randomVariables.cityValue)
+        step("Вносим фамилию", () -> {
+            registrationPage.setLastName(randomVariables.lastNameValue);
+        });
 
-                .closeModalVerify();
+        step("Вносим почтовый адрес", () -> {
+            registrationPage.setUserEmail(randomVariables.emailValue);
+        });
+
+        step("Выбираем гендер", () -> {
+            registrationPage.setGender(randomVariables.genderValue);
+        });
+
+        step("Вносим номер телефона", () -> {
+            registrationPage.setUserNumber(randomVariables.phoneNumber);
+        });
+
+        step("Заполняем дату рождения", () -> {
+            registrationPage.setBirthDate(randomVariables.dayValue,randomVariables.monthValue, randomVariables.yearValue);
+        });
+
+        step("Выбираем предметы", () -> {
+            registrationPage.setSubject(randomVariables.subjectValue);
+        });
+
+        step("Вносим хобби", () -> {
+            registrationPage.setHobbie(randomVariables.hobbyValue);
+        });
+
+        step("Добавляем файл", () -> {
+            registrationPage.selectPicture(randomVariables.pictureNameValue);
+        });
+
+        step("Вносим адрес", () -> {
+            registrationPage.setCurrentAddress(randomVariables.addressValue);
+        });
+
+        step("Выбираем город и штат", () -> {
+            registrationPage.selectStateAndCity(randomVariables.stateValue, randomVariables.cityValue);
+        });
+
+        step("Нажимаем кнопку применить", () -> {
+            registrationPage .submitPress();
+        });
+
+
+        step("Открыта форма проверки", () -> {
+            registrationPage.verifyRegistrationResultModalAppears();
+        });
+
+        step("Проверка имени и фамилии", () -> {
+            registrationPage.verifyResult("Student Name", randomVariables.firstNameValue
+                    + " " + randomVariables.lastNameValue);
+        });
+
+        step("Проверка почтового адреса", () -> {
+            registrationPage.verifyResult("Student Email", randomVariables.emailValue);
+        });
+
+        step("Проверка гендера", () -> {
+            registrationPage.verifyResult("Gender", randomVariables.genderValue);
+        });
+
+        step("Проверка номера телефона", () -> {
+            registrationPage.verifyResult("Mobile", randomVariables.phoneNumber);
+        });
+
+        step("Проверка даты рождения", () -> {
+            registrationPage.verifyResult("Date of Birth", randomVariables.dayValue + " "
+                    + randomVariables.monthValue + "," + randomVariables.yearValue);
+        });
+
+        step("Проверка предметов", () -> {
+            registrationPage.verifyResult("Subjects", randomVariables.subjectValue);
+        });
+
+        step("Проверка хобби", () -> {
+            registrationPage.verifyResult("Hobbies", randomVariables.hobbyValue);
+        });
+
+        step("Проверка картинки", () -> {
+            registrationPage.verifyResult("Picture", randomVariables.pictureNameValue);
+        });
+
+        step("Проверка адреса", () -> {
+            registrationPage.verifyResult("Address", randomVariables.addressValue);
+        });
+
+        step("Проверка города и штата", () -> {
+            registrationPage.verifyResult("State and City", randomVariables.stateValue
+                    + " " + randomVariables.cityValue);
+        });
+
+        step("Закрытие окна проверки", () -> {
+            registrationPage.closeModalVerify();
+        });
+
 
     }
 
