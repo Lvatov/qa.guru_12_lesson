@@ -3,7 +3,6 @@ package com.demoqa.tests;
 
 import com.demoqa.pages.RegistrationPage;
 import com.demoqa.utils.RandomVariables;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
@@ -17,6 +16,7 @@ public class RemotePracticeForm extends RemoteTestBase {
     RandomVariables randomVariables = new RandomVariables();
 
     @Test
+    @DisplayName("Форма для регистрации")
     void formTest() {
 
         step("Открываем форму регистрации, убираем баннеры", () -> {
