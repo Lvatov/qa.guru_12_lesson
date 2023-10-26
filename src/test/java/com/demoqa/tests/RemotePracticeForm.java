@@ -119,9 +119,7 @@ public class RemotePracticeForm extends RemoteTestBase {
                     + " " + randomVariables.cityValue);
         });
 
-        step("Закрытие окна проверки", () -> {
-            registrationPage.closeModalVerify();
-        });
+
 
 
     }
