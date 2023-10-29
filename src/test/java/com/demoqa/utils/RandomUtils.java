@@ -6,7 +6,7 @@ import java.security.SecureRandom;
 import java.util.Locale;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static Data.StateAndCityPracticeForm.statesAndCities;
+import static data.StateAndCityPracticeForm.statesAndCities;
 
 public class RandomUtils {
 
