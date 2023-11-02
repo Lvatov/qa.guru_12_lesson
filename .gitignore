@@ -1,6 +1,5 @@
 #Directories
 /.gradle/
-/build/
 /build/classes/java/test/
 /.idea/
 /gradle/wrapper/
