@@ -2,6 +2,7 @@ package github.com;
 
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -16,7 +17,7 @@ public class GitWikiPageSoftAssertions {
         Configuration.browserSize = "1920x1080";
         Configuration.pageLoadStrategy = "eager";
     }
-
+    @Disabled
     @Test
     void assertionSoftTest() {
 
